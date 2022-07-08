@@ -1,15 +1,15 @@
 pipeline {
     agent any
     tools { 
-        maven 'MAVEN_3_6_3' 
-        jdk 'JDK_1_8' 
+        maven 'MAVEN_3_8_6' 
+        jdk 'JDK_1_11' 
     }
 	
     stages {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'MAVEN_3_6_3') {
+                withMaven(maven : 'MAVEN_3_8_6') {
                     bat 'mvn clean compile'
                 }
             }
@@ -18,7 +18,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'MAVEN_3_6_3') {
+                withMaven(maven : 'MAVEN_3_8_6') {
                     bat 'mvn test'
                 }
             }
@@ -27,7 +27,7 @@ pipeline {
 
         stage ('package Stage') {
             steps {
-                withMaven(maven : 'MAVEN_3_6_3') {
+                withMaven(maven : 'MAVEN_3_8_6') {
                     bat 'mvn package'
                 }
             }
